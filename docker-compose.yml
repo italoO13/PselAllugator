@@ -5,9 +5,12 @@ services:
     build: ./backend
     ports:
       - 3005:3005
+    working_dir: /backend
+    command: npm run dev
     volumes:
       - ./backend:/backend
     environment:
+      - PORT=3005
       - DB_USER=root
       - DB_PASS=password
       - DB_HOST=db
