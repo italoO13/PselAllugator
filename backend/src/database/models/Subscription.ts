@@ -5,9 +5,9 @@ import ProductInventory from './ProductInventory';
 
 class Subscription extends Model {
   id?: number;
-  date_init?: Date;
-  data_devolution?: Date;
-  productInventory: number;
+  dateInit?: Date;
+  dateDevolution?: Date;
+  productInventId: number;
   clientId: number;
   devolution?:boolean;
 }
@@ -26,11 +26,11 @@ Subscription.init({
   dateDevolution: {
     type:"TIMESTAMP",
   },
-  productInventory: {
+  productInventId: {
     type: INTEGER,
     allowNull:false,
     references: {
-      model:'Product_invetory',
+      model:'Product_inventory',
       key:'id'
     },
     onUpdate:'CASCADE',
@@ -61,7 +61,7 @@ Subscription.init({
 Subscription.belongsTo(Client, {foreignKey:'clientId', as: 'client'})
 Client.hasMany(Subscription, {foreignKey:'clientId', as: 'subscriptions'})
 
-Subscription.belongsTo(ProductInventory, {foreignKey:'productInventory', as: 'productInventory'})
-ProductInventory.hasMany(Subscription, {foreignKey:'productInventory', as: 'subscriptions'})
+Subscription.belongsTo(ProductInventory, {foreignKey:'productInventId', as: 'productInventory'})
+ProductInventory.hasMany(Subscription, {foreignKey:'productInventId', as: 'subscriptions'})
 
 export default Subscription;
