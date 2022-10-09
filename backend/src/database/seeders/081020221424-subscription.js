@@ -4,19 +4,24 @@ module.exports = {
       'Subscription', 
       [
         {
-          product_invetory: 1,
+          product_invent_id: 1,
           client_id:1,
           devolution:false
         },
         {
-          product_invetory: 2,
+          product_invent_id: 2,
           client_id:1,
           devolution:false
         },
         {
-          product_invetory: 3,
+          product_invent_id: 2,
           client_id:1,
-          data_devolution:new Date('10/08/2022'),
+          devolution:true
+        },
+        {
+          product_invent_id: 3,
+          client_id:1,
+          date_devolution:new Date('10/08/2022'),
           devolution:true
         },
       ]
