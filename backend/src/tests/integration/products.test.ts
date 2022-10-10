@@ -30,6 +30,25 @@ describe('Testa a rota Products', () => {
 
 
   })
+  describe('Quando é pesquisado um produto por nome através rota GET', () => {
+    beforeEach(() => {
+      sinon.stub(Product, 'findAll').resolves(mock.products as unknown as Product[]);
+    })
+    afterEach(() => {
+      sinon.restore()
+    })
 
+    it('deve retornar status igual a 200', async () => {
+      const result = await chai.request(app).get('/products/search?name=Smartphone');
+      expect(result.status).to.be.equal(200);
+    })
+
+    it('deve retornar um array de objetos semelhante ao mock.products', async () => {
+      const result = await chai.request(app).get('/products/search?name=Smartphone');
+      expect(result.body).to.deep.equal(mock.productsAdapted);
+    })
+
+
+  })
 
 })
