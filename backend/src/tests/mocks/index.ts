@@ -85,7 +85,13 @@ export default {
       "qtd": 3
     },
   
-  ]
+  ],
+  client: {
+    "name":"Italoiveldol",
+    "email": "italoiveldo1@gmail.com",
+    "password":"secret",
+    "cpf":"11441716440"
+  }
 
 
 }
