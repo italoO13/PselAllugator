@@ -4,6 +4,7 @@ import IProduct from "../../interfaces/IProduct";
 import IProductsModel from "./IProductsModel";
 import Subscription from "../../database/models/Subscription";
 import IProductInventory from "../../interfaces/IProductInventory";
+import { Op } from "sequelize";
 
 
 export default class ProductsModel implements IProductsModel {
@@ -20,8 +21,20 @@ export default class ProductsModel implements IProductsModel {
     return newResult
   }
 
+  async search(name:string): Promise<IProduct[]> {
+    const result = await Product.findAll({
+      include: [
+        {model: ProductInventory, as: 'inventory', 
+        include: [{model: Subscription, as:'subscriptions'}],
+        attributes: {exclude: ['productId']}}
+      ], where:{name: {[Op.substring]: name}}
+    });
+    const newResult = this.adapter(result);
+    return newResult
+  }
+  
   private adapter(products:IProduct[]):IProduct[] {
-    const newProduct = products.map((prod) => {
+    const newProduct = products.map((prod:IProduct) => {
       const {id, name, description, image, price, categoryId}:IProduct = prod
       if(!prod.inventory) {
         return {id, name, description, image, price, categoryId, qtd:0}
