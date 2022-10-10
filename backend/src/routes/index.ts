@@ -3,11 +3,13 @@ import { Request, Response, NextFunction } from "express";
 import CustomError from "../helper/CustomError";
 import productsRouter from './productsRouter'
 import clientsRouter from './clientsRouter';
+import sessionRouter from './sessionRouter';
 
 const router = Router();
 
-router.use('/products', productsRouter)
+router.use('/products', productsRouter);
 router.use('/clients', clientsRouter);
+router.use('/session', sessionRouter);
 
 router.use((error:CustomError,req:Request, res:Response, next:NextFunction) => {
   console.log(error);
