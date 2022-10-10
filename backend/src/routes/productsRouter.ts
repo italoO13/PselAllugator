@@ -9,6 +9,7 @@ const productsController = new ProductsController(productsService)
 
 const router = Router();
 
+router.get('/search', productsController.search)
 router.get('/', productsController.getAll)
 
 export default router;
