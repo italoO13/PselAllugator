@@ -4,7 +4,7 @@ const schema = joi.object({
   name: joi.string().min(2).required().messages({
     'string.empty': '400|All fields must be filled',
     'string.required': '400|All fields must be filled',
-    'string;min':'400| Name must be longer than 2 characters'
+    'string.min':'400| Name must be longer than 2 characters'
   }),
   email: joi.string().email().required().messages({
     'string.empty': '400|All fields must be filled',
