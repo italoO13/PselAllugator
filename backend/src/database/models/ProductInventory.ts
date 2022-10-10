@@ -31,6 +31,6 @@ ProductInventory.init({
 });
 
 ProductInventory.belongsTo(Product, {foreignKey:'productId', as:'product'});
-Product.hasMany(ProductInventory, {foreignKey:'productId', as:'invetory'})
+Product.hasMany(ProductInventory, {foreignKey:'productId', as:'inventory'})
 
 export default ProductInventory;

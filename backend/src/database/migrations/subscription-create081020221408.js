@@ -10,14 +10,14 @@ module.exports = {
         type:"TIMESTAMP",
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      data_devolution: {
+      date_devolution: {
         type:"TIMESTAMP",
       },
-      product_invetory: {
+      product_invent_id: {
         allowNull:false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Product_invetory',
+          model: 'Product_inventory',
           key:'id'
         },
         onUpdate:'CASCADE',
