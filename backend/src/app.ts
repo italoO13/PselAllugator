@@ -29,3 +29,6 @@ class App {
 }
 
 export default App;
+
+// Importante exportar dessa forma para conseguir rodar os testes
+export const { app } = new App();
