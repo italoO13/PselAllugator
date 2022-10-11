@@ -13,7 +13,7 @@ export default class Auth {
     this.secret = process.env.JWT_SECRET || 'secret';
   }
 
-  generateToken = (body:object):string => {
+  async generateToken(body:object):Promise<string> {
     const token = jwt.sign(
       {...body}, this.secret, {expiresIn: this.config.expiresIn, algorithm: this.config.algorithm}
     )
