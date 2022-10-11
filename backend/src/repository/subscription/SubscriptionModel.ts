@@ -5,6 +5,10 @@ import ProductInventory from "../../database/models/ProductInventory";
 import Product from "../../database/models/Product";
 
 export default class SubscriptionModel implements ISubscriptionModel {
+  async create(sub: ISubscription): Promise<void> {
+    await Subscription.create({...sub});
+  }
+
   async getSubsById(id: number): Promise<ISubscription[]> {
     const result = await Subscription.findAll({
       include:[
