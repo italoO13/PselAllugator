@@ -21,4 +21,15 @@ export default class SubscriptionController implements ISubscriptionController {
     }
   }
 
+  create = async(req: IRequestWithClient, res: Response, next: NextFunction) => {
+    try {
+      const {id} = req.client as IJWT; 
+      const { productInventId } = req.body
+      const result = await this.service.create({clientId: id, productInventId })
+      res.status(200).json(result);
+    } catch (error) {
+      next(error)
+    }
+  }
+
 }
