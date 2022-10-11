@@ -17,7 +17,7 @@ export default class SessionController implements ISessionController {
   try {
     const {email, password} = req.body;
     const id = await this.service.login(email, password)
-    const token = this.auth.generateToken({id})
+    const token = await this.auth.generateToken({id})
     res.status(200).json({token})
   } catch (error) {
     next(error);
