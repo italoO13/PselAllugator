@@ -8,6 +8,9 @@ export default class SubscriptionService implements ISubscriptionService {
   constructor(model: ISubscriptionModel) {
     this.model = model;
   }
+  async create(sub: ISubscription): Promise<void> {
+    await this.model.create({...sub, devolution:false });
+  }
 
   async getSubsByclient(id: number): Promise<ISubscription[]> {
     const result = await this.model.getSubsById(id);
