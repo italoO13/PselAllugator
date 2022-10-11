@@ -13,7 +13,7 @@ export default class AuthMiddleware {
   verifyClient = async(req: IRequestWithClient, res:Response, next: NextFunction) => {
     const {authorization} = req.headers;
     if(!authorization) {
-      throw new CustomError(400, 'Token not informed')
+      return next(new CustomError(400, 'Token not informed'))
     }
     try {
       const client = await this.auth.decodeToken(authorization)
