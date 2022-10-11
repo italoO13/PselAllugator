@@ -14,6 +14,7 @@ const authMiddleware = new AuthMiddleware()
 
 
 router.get('/',authMiddleware.verifyClient, subscriptionController.getSubsByClient);
+router.post('/', authMiddleware.verifyClient, subscriptionController.create);
 
 export default router;
 
