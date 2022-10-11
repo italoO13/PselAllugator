@@ -14,7 +14,6 @@ export default class SubscriptionController implements ISubscriptionController {
   getSubsByClient = async(req: IRequestWithClient, res: Response, next: NextFunction) => {
     try {
       const {id} = req.client as IJWT; 
-      console.log(id);
       const result = await this.service.getSubsByclient(id)
       res.status(200).json(result);
     } catch (error) {
