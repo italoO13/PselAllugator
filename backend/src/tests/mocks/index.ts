@@ -91,7 +91,8 @@ export default {
     "email": "italoiveldo1@gmail.com",
     "password":"secret",
     "cpf":"11441716440"
-  }
+  },
+  token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjY1NDQzOTkzLCJleHAiOjE2NjU1MzAzOTN9.oxiF4qqjfm4pGBmLZPn3_WzQBc--HH7CariWBm91qWI'
 
 
 }
