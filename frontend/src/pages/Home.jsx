@@ -3,6 +3,7 @@ import appContext from '../contexts/AppContext';
 import { getProducts } from '../api/products';
 import Header from '../components/Header';
 import Search from '../components/Search';
+import CardProduct from '../components/CardProduct';
 
 function Home() {
   const {
@@ -29,12 +30,7 @@ function Home() {
         : (
           <div className="cards">
             {products.map((prod) => (
-              <div key={prod.id}>
-                <h2>{prod.name}</h2>
-                <p>{`R$ ${prod.price}`}</p>
-                <button type="button">Ver produto</button>
-                <button type="button">Adicionar</button>
-              </div>
+              <CardProduct prod={prod} />
             ))}
           </div>
         )}
