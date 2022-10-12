@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import appContext from '../contexts/AppContext';
 import { getProducts } from '../api/products';
+import Header from '../components/Header';
 
 function Home() {
   const {
@@ -26,7 +27,7 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="header">header</div>
+      <Header />
       <div className="search">
         <input type="text" onChange={searchByName} />
       </div>
