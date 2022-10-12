@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function CardProduct({ prod }) {
   const {
@@ -11,7 +12,9 @@ function CardProduct({ prod }) {
       <img src={image} alt={name} width="150px" />
       <h2>{name}</h2>
       <p>{`R$ ${price}`}</p>
-      <button type="button">Ver produto</button>
+      <Link to={`/product/${id}`}>
+        Ver produto
+      </Link>
       <button type="button">Adicionar</button>
     </div>
   );
