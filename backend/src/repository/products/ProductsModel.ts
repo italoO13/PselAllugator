@@ -21,6 +21,20 @@ export default class ProductsModel implements IProductsModel {
     return newResult
   }
 
+  async getProductById(id: number): Promise<IProduct[]> {
+    const result = await Product.findAll({
+      include: [
+        {model: ProductInventory, as: 'inventory', 
+        include: [{model: Subscription, as:'subscriptions'}],
+        attributes: {exclude: ['productId']}}
+      ],
+      where: {id}
+    });
+
+    const newResult = this.adapter(result);
+    return newResult
+  }
+
   async search(name:string): Promise<IProduct[]> {
     const result = await Product.findAll({
       include: [
