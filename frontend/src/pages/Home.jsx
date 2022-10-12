@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import appContext from '../contexts/AppContext';
 import { getProducts } from '../api/products';
 import Header from '../components/Header';
+import Search from '../components/Search';
 
 function Home() {
   const {
@@ -18,19 +19,10 @@ function Home() {
     getApiProducts();
   }, []);
 
-  const searchByName = async ({ target }) => {
-    setLoading(true);
-    const response = await getProducts(target.value);
-    setProducts(response.data);
-    setLoading(false);
-  };
-
   return (
     <div className="home">
       <Header />
-      <div className="search">
-        <input type="text" onChange={searchByName} />
-      </div>
+      <Search />
 
       {loading
         ? <p>Carregando...</p>
