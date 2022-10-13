@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import appContext from '../contexts/AppContext';
 import {
   removeItemLocalStoreCart, removeProdLocalStoreCart,
-} from '../services/api/localStore';
+} from '../services/localStore';
 import ButtonAddItem from './ButtonAddItem';
 
 function Cart({ prod, load }) {
