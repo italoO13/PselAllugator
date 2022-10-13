@@ -9,6 +9,16 @@ export default class ProductsController implements IProductsController {
     this.service = service;
   }
 
+  getProductById = async(req: Request, res: Response, next: NextFunction) => {
+    try {
+      const {id} = req.params; 
+      const result = await this.service.getProductById(Number(id))
+      res.status(200).json(result);
+    } catch (error) {
+      next(error)
+    }
+  }
+
   search = async(req: Request, res: Response, next: NextFunction) => {
     try {
       const {name} = req.query; 

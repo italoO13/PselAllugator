@@ -8,6 +8,10 @@ export default class ProductsService implements IProductsService {
   constructor(model:IProductsModel){
     this.model = model;
   }
+  async getProductById(id: number): Promise<IProduct[]> {
+    const result = await this.model.getProductById(id);
+    return result;
+  }
   async search(name:string): Promise<IProduct[]> {
     const result = await this.model.search(name)
     return result;
