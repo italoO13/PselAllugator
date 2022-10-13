@@ -4,7 +4,7 @@ import appContext from '../contexts/AppContext';
 
 function ShoppingCart() {
   const {
-    cart, loadCart,
+    cart, loadCart, login,
   } = useContext(appContext);
 
   useEffect(() => {
@@ -23,6 +23,10 @@ function ShoppingCart() {
           <Cart prod={prod} load={load} />
         ))}
       </ul>
+
+      <button type="button">Fechar Assinatura</button>
+      {!login
+        && <p>É necessário realizar o login para finalizar assinatura</p>}
     </div>
   );
 }

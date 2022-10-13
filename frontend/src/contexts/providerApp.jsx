@@ -8,6 +8,7 @@ function ProviderApp({ children }) {
   const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState(ReadLocalStoreCart());
+  const [login] = useState(false);
 
   const loadCart = () => {
     setCart(ReadLocalStoreCart());
@@ -26,6 +27,7 @@ function ProviderApp({ children }) {
     loadCart,
     cart,
     addCartProd,
+    login,
   };
 
   return (
