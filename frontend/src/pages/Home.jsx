@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import appContext from '../contexts/AppContext';
-import { getProducts } from '../api/products';
+import { getProducts } from '../services/api/products';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import CardProduct from '../components/CardProduct';
