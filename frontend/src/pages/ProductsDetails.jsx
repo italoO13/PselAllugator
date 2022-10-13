@@ -1,8 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import appContext from '../contexts/AppContext';
-import { getProductbyId } from '../api/products';
+import { getProductbyId } from '../services/api/products';
 import Header from '../components/Header';
+import ButtonAddItem from '../components/ButtonAddItem';
 
 function ProductsDetails() {
   const {
@@ -32,8 +33,8 @@ function ProductsDetails() {
           <p>{product.description}</p>
           <p>{`R$ ${product.price} ao ano`}</p>
         </div>
-        <button type="button">Adicionar</button>
-        <button type="button">Ver Carrinho</button>
+        <ButtonAddItem prod={product} />
+        <Link to="/cart">Ver Carrinho</Link>
       </div>
       )}
 
