@@ -30,7 +30,7 @@ function Home() {
         : (
           <div className="cards">
             {products.map((prod) => (
-              <CardProduct prod={prod} />
+              <CardProduct key={prod.id} prod={prod} />
             ))}
           </div>
         )}
