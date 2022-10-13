@@ -1,9 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: 'http://localhost:3005',
-});
+import api from '.';
 
 export const postCreateAccount = async (client) => {
   const response = await api.post('/clients', client);
