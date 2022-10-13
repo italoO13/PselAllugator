@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { getProducts } from '../api/products';
+import { getProducts } from '../services/api/products';
 import appContext from '../contexts/AppContext';
 
 function Search() {
