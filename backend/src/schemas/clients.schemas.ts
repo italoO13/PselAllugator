@@ -11,7 +11,7 @@ const schema = joi.object({
     'string.required': '400|All fields must be filled',
     'string.email':'401|Incorrect email or password'
   }),
-  password: joi.string().min(2).max(10).required().messages({
+  password: joi.string().min(2).required().messages({
     'string.empty': '400|All fields must be filled',
     'string.required': '400|All fields must be filled',
     'string.min':'401|Incorrect email or password',
