@@ -22,18 +22,24 @@ function ProductsDetails() {
     getApiProductsDetails();
   }, []);
 
+  const {
+    image, name, price, qtd, description, id,
+  } = product;
   return (
     <div className="ProductsDetails">
       <Header />
       { !loading && (
       <div className="prod">
-        <img src={product.image} alt="Detalhe do produto" width="250px" />
+        <img src={image} alt="Detalhe do produto" width="250px" />
         <div className="info">
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>{`R$ ${product.price} ao ano`}</p>
+          <h2>{name}</h2>
+          <p>{description}</p>
+          <p>{`R$ ${price} ao ano`}</p>
         </div>
-        <ButtonAddItem prod={product} />
+        <ButtonAddItem prod={{
+          id, name, price, qtdMax: qtd,
+        }}
+        />
         <Link to="/cart">Ver Carrinho</Link>
       </div>
       )}

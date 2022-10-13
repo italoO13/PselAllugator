@@ -5,7 +5,7 @@ import ButtonAddItem from './ButtonAddItem';
 
 function CardProduct({ prod }) {
   const {
-    id, name, price, image,
+    id, name, price, image, qtd,
   } = prod;
 
   return (
@@ -16,7 +16,10 @@ function CardProduct({ prod }) {
       <Link to={`/product/${id}`}>
         Ver produto
       </Link>
-      <ButtonAddItem prod={prod} />
+      <ButtonAddItem prod={{
+        id, name, price, qtdMax: qtd,
+      }}
+      />
     </div>
   );
 }
