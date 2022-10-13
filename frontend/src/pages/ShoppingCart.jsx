@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import ButtonAddItem from '../components/ButtonAddItem';
+import appContext from '../contexts/AppContext';
 import {
-  addLocalStoreCart, ReadLocalStoreCart, removeItemLocalStoreCart, removeProdLocalStoreCart,
+  removeItemLocalStoreCart, removeProdLocalStoreCart,
 } from '../services/api/localStore';
 
 function ShoppingCart() {
-  const [cart, setCart] = useState([]);
+  const {
+    cart, loadCart,
+  } = useContext(appContext);
+
   useEffect(() => {
-    const loadCart = () => {
-      const date = ReadLocalStoreCart();
-      setCart(date);
-    };
     loadCart();
   }, []);
 
   const load = () => {
-    setCart(ReadLocalStoreCart());
+    loadCart();
   };
 
   return (
@@ -36,16 +37,7 @@ function ShoppingCart() {
               Remover Item
 
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                addLocalStoreCart(prod);
-                load();
-              }}
-            >
-              Adicionar
-
-            </button>
+            <ButtonAddItem prod={prod} />
             <button
               type="button"
               onClick={() => {
