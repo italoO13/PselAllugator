@@ -19,7 +19,7 @@ export default class SubscriptionModel implements ISubscriptionModel {
         return true;
       }
 
-      if(obj.subscriptions.some((sub:ISubscription) => sub.devolution === true)){
+      if(obj.subscriptions.every((sub:ISubscription) => sub.devolution !== false)){
         return true;
       }
     })

@@ -63,7 +63,7 @@ export default class ProductsModel implements IProductsModel {
       if(invent.subscriptions.length === 0) {
         return acc + 1
       }
-      if(invent.subscriptions.every(({devolution}) => devolution===true )) {
+      if(invent.subscriptions.filter(({devolution}) => devolution===false ).length===0) {
         return acc +1
       }
       return acc
