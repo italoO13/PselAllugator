@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { addLocalStoreCart, qtdMaxProdById } from '../services/api/localStore';
+import { qtdMaxProdById } from '../services/api/localStore';
+import appContext from '../contexts/AppContext';
 
 function ButtonAddItem({ prod }) {
   const [qtdProd, setQtdProd] = useState(qtdMaxProdById(prod.id));
+
+  const {
+    cart, addCartProd,
+  } = useContext(appContext);
+
+  useEffect(() => {
+    const loadQtd = () => {
+      setQtdProd(qtdMaxProdById(prod.id));
+    };
+    loadQtd();
+  }, [cart]);
+
   return (
     <button
       type="button"
-      disabled={qtdProd >= prod.qtd}
+      disabled={qtdProd >= prod.qtdMax}
       onClick={() => {
-        addLocalStoreCart(prod);
+        addCartProd(prod);
         setQtdProd(qtdProd + 1);
       }}
     >
-      {qtdProd >= prod.qtd ? 'Estoque vazio' : 'adicionar'}
+      {qtdProd >= prod.qtdMax ? 'Estoque vazio' : 'adicionar'}
 
     </button>
+
   );
 }
 
