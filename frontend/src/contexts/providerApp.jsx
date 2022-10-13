@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import appContext from './AppContext';
 import { ReadLocalStoreCart, addLocalStoreCart } from '../services/localStore';
+import api from '../services/api';
 
 function ProviderApp({ children }) {
   const [products, setProducts] = useState();
@@ -17,6 +18,7 @@ function ProviderApp({ children }) {
     const verifyLogin = () => {
       const tokenLocal = localStorage.getItem('token') || '';
       if (tokenLocal !== '') {
+        api.defaults.headers.authorization = tokenLocal;
         return setLogin({
           status: true,
           token: tokenLocal,
@@ -46,6 +48,7 @@ function ProviderApp({ children }) {
       status: true,
       token,
     });
+    api.defaults.headers.authorization = token;
   };
 
   const context = {
