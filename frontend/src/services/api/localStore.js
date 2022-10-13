@@ -13,13 +13,13 @@ const setItemInCart = (newLocalStore) => {
 };
 
 export const addLocalStoreCart = ({
-  id, name, price, qtd,
+  id, name, price, qtdMax,
 }) => {
   const localStorageAtual = ReadLocalStoreCart();
   const prod = localStorageAtual.find((obj) => obj.id === id);
   if (!prod) {
     return setItemInCart([...localStorageAtual, {
-      id, name, price, qtd: 1, qtdMax: qtd,
+      id, name, price, qtd: 1, qtdMax,
     }]);
   }
   prod.qtd += 1;
