@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authAccount } from '../services/api/client';
 import appContext from '../contexts/AppContext';
+import Header from '../components/Header';
 // import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -30,6 +31,7 @@ function Login() {
 
   return (
     <div>
+      <Header />
       <h1>Entrar</h1>
       <form>
         <label htmlFor="email">

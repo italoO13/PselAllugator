@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 import { postCreateAccount } from '../services/api/client';
 
 function CreateAccount() {
@@ -30,6 +31,7 @@ function CreateAccount() {
 
   return (
     <div className="CreateAccount">
+      <Header />
       <h1>Criar uma nova conta</h1>
       <form>
         <label htmlFor="name">
