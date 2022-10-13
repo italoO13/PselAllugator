@@ -38,7 +38,7 @@ function ShoppingCart() {
       </ul>
 
       <button type="button">Fechar Assinatura</button>
-      {!login
+      {!login.status
         && <p>É necessário realizar o login para finalizar assinatura</p>}
     </div>
   );
