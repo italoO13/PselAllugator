@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { addLocalStoreCart, qtdMaxProdById } from '../services/api/localStore';
+import ButtonAddItem from './ButtonAddItem';
 
 function CardProduct({ prod }) {
   const {
     id, name, price, image,
   } = prod;
-  const [qtdProd, setQtdProd] = useState(qtdMaxProdById(id));
 
   return (
     <div key={id}>
@@ -17,17 +16,7 @@ function CardProduct({ prod }) {
       <Link to={`/product/${id}`}>
         Ver produto
       </Link>
-      <button
-        type="button"
-        disabled={qtdProd >= prod.qtd}
-        onClick={() => {
-          addLocalStoreCart(prod);
-          setQtdProd(qtdProd + 1);
-        }}
-      >
-        {qtdProd >= prod.qtd ? 'Estoque vazio' : 'adicionar'}
-
-      </button>
+      <ButtonAddItem prod={prod} />
     </div>
   );
 }
