@@ -10,3 +10,8 @@ export const authAccount = async (client) => {
   const response = await api.post('/session', client);
   return response.data;
 };
+
+export const getClientById = async () => {
+  const response = await api.get('/clients');
+  return response.data;
+};
