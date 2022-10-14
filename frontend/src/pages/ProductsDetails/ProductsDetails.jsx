@@ -1,9 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import appContext from '../contexts/AppContext';
-import { getProductbyId } from '../services/api/products';
-import Header from '../components/Header';
-import ButtonAddItem from '../components/ButtonAddItem';
+import appContext from '../../contexts/AppContext';
+import { getProductbyId } from '../../services/api/products';
+import Header from '../../components/Header/Header';
+import ButtonAddItem from '../../components/ButtonAddItem/ButtonAddItem';
+import './ProductsDetails.css';
 
 function ProductsDetails() {
   const {
@@ -29,22 +30,27 @@ function ProductsDetails() {
     <div className="ProductsDetails">
       <Header />
       { !loading && (
-      <div className="prod">
+      <div className="ProductsDetails-prod">
         <img src={image} alt="Detalhe do produto" width="250px" />
-        <div className="info">
+        <div className="ProductsDetails-prod-info">
           <h2>{name}</h2>
           <p>{description}</p>
-          <p>{`R$ ${price} ao ano`}</p>
+          <p className="ProductsDetails-prod-price">{`R$ ${price} ao ano`}</p>
+          <div className="actions-productsDetails">
+
+            <ButtonAddItem prod={{
+              id, name, price, qtdMax: qtd,
+            }}
+            />
+            <Link to="/cart">Ver Carrinho</Link>
+
+          </div>
         </div>
-        <ButtonAddItem prod={{
-          id, name, price, qtdMax: qtd,
-        }}
-        />
-        <Link to="/cart">Ver Carrinho</Link>
       </div>
       )}
 
     </div>
+
   );
 }
 
