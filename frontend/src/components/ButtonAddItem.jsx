@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { qtdMaxProdById } from '../services/api/localStore';
+import { qtdMaxProdById } from '../services/localStore';
 import appContext from '../contexts/AppContext';
 
 function ButtonAddItem({ prod }) {

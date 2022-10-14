@@ -1,4 +1,4 @@
-import IClient from "../../interfaces/IClient";
+import IClient, { IClientConsult } from "../../interfaces/IClient";
 import IClientsService from "./IClientsService";
 import IClientsModel from "../../repository/clients/IClientsModel";
 import crypt from "../../helper/crypt";
@@ -8,6 +8,10 @@ export default class ClientsService implements IClientsService {
 
   constructor(model:IClientsModel){
     this.model = model;
+  }
+  async getByClientId(id: number): Promise<IClientConsult> {
+    const result = await this.model.getClientById(id);
+    return result as IClientConsult;
   }
 
   async create(client: IClient): Promise<void> {

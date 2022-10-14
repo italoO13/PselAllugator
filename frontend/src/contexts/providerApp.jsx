@@ -1,14 +1,37 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import appContext from './AppContext';
-import { ReadLocalStoreCart, addLocalStoreCart } from '../services/api/localStore';
+import { ReadLocalStoreCart, addLocalStoreCart } from '../services/localStore';
+import api from '../services/api';
 
 function ProviderApp({ children }) {
   const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState(ReadLocalStoreCart());
-  const [login] = useState(false);
+  const [login, setLogin] = useState({
+    status: false,
+    token: '',
+  });
+
+  useEffect(() => {
+    const verifyLogin = () => {
+      const tokenLocal = localStorage.getItem('token') || '';
+      if (tokenLocal !== '') {
+        api.defaults.headers.authorization = tokenLocal;
+        return setLogin({
+          status: true,
+          token: tokenLocal,
+        });
+      }
+      return setLogin({
+        status: false,
+        token: '',
+      });
+    };
+
+    verifyLogin();
+  }, []);
 
   const loadCart = () => {
     setCart(ReadLocalStoreCart());
@@ -17,6 +40,15 @@ function ProviderApp({ children }) {
   const addCartProd = (prod) => {
     addLocalStoreCart(prod);
     loadCart();
+  };
+
+  const persistLogin = (token) => {
+    localStorage.setItem('token', token);
+    setLogin({
+      status: true,
+      token,
+    });
+    api.defaults.headers.authorization = token;
   };
 
   const context = {
@@ -28,6 +60,7 @@ function ProviderApp({ children }) {
     cart,
     addCartProd,
     login,
+    persistLogin,
   };
 
   return (
