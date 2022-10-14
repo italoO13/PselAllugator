@@ -5,6 +5,7 @@ import CreateAccount from './pages/CreateAccount';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProductsDetails from './pages/ProductsDetails';
+import Profile from './pages/Profile';
 import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/create" element={<CreateAccount />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
 
     </ProviderApp>
