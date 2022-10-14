@@ -12,8 +12,8 @@ function Login() {
     password: '',
   });
   const [alert, setAlert] = useState('');
+  const [sucess, setSucess] = useState('');
   const { persistLogin } = useContext(appContext);
-  // const navigate = useNavigate();
 
   const handleInput = ({ target }) => {
     setUser({ ...user, [target.name]: target.value });
@@ -21,8 +21,14 @@ function Login() {
 
   const newSession = async () => {
     try {
+      setSucess('');
       const result = await authAccount(user);
       persistLogin(result.token);
+      setUser({
+        email: '',
+        password: '',
+      });
+      setSucess('Usuário logado com sucesso');
     } catch (error) {
       if (error.response.data) {
         setAlert(error.response.data.message);
@@ -69,7 +75,7 @@ function Login() {
           </Link>
 
         </form>
-
+        {sucess !== '' && <p className="sucess-login">{sucess}</p>}
         {alert !== '' && <p className="alert-login">{alert}</p>}
       </div>
 
