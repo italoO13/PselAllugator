@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Cart from '../components/Cart';
-import appContext from '../contexts/AppContext';
-import { postCreateSubscription } from '../services/api/subscription';
-import Header from '../components/Header';
-// import { removeItemLocalStoreCart } from '../services/localStore';
+import Cart from '../../components/Cart/Cart';
+import appContext from '../../contexts/AppContext';
+import { postCreateSubscription } from '../../services/api/subscription';
+import Header from '../../components/Header/Header';
+import './ShoppingCart.css';
 
 function ShoppingCart() {
   const {
@@ -50,20 +50,23 @@ function ShoppingCart() {
   return (
     <div className="ShoppingCart">
       <Header />
-      <h2>Carrinho de compras</h2>
-      <h3>{`Valor Total: R$ ${total}`}</h3>
-      <ul>
-        {cart.map((prod) => (
-          <Cart prod={prod} load={load} />
-        ))}
-      </ul>
+      <div className="ShoppingCart-wrapper">
+        <h2 className="ShoppingCart-title">Carrinho de compras</h2>
+        <h3>{`Valor Total: R$ ${total}`}</h3>
+        <ul className="ShoppingCart-wrapper-carts">
+          {cart.map((prod) => (
+            <Cart prod={prod} load={load} />
+          ))}
+        </ul>
 
-      <button type="button" onClick={createSubscription}>Fechar Assinatura</button>
-      {!login.status
-        && <p>É necessário realizar o login para finalizar assinatura</p>}
+        {!login.status ? <p className="alert-ShoppingCart">É necessário realizar o login para finalizar assinatura</p>
 
-      {alert && <p>{alert}</p>}
-      {success && <p>Produtos assinados com sucesso</p>}
+          : <button type="button" className="shoppingCart-btn" onClick={createSubscription}>Fechar Assinatura</button>}
+
+        {alert && <p className="alert-ShoppingCart">{alert}</p>}
+        {success && <p className="sucess-ShoppingCart">Produtos assinados com sucesso</p>}
+
+      </div>
 
     </div>
   );

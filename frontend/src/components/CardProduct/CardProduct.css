@@ -1,0 +1,61 @@
+.cardProduct {
+  width: 400px;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+}
+
+.cardProduct-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardProduct-info img {
+  width: 250px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.cardProduct-info h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.cardProducts-actions {
+  margin: auto;
+  display: flex;
+  margin-top: 15px;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+}
+
+.cardProducts-actions a {
+  text-decoration: none;
+  width: 100%;
+  border: 1px solid #0FCF58;
+  padding: 7px;
+  text-align: center;
+  font-size: 1rem;
+  color: #0FCF58;
+}
+
+.cardProducts-actions button {
+  width: 100%;
+  margin-top: 4px;
+  padding: 7px;
+  cursor: pointer;
+  background-color: #0FCF58;
+  color:#FAFAFA;
+  font-size: 1rem;
+  border: transparent;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardProducts-actions a:hover, button:hover {
+  opacity: 50%;
+}

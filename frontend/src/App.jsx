@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ProviderApp from './contexts/providerApp';
-import CreateAccount from './pages/CreateAccount';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import ProductsDetails from './pages/ProductsDetails';
+import CreateAccount from './pages/CreateAccount/CreateAccount';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import ProductsDetails from './pages/ProductsDetails/ProductsDetails';
 import Profile from './pages/Profile';
-import ShoppingCart from './pages/ShoppingCart';
+import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 
 function App() {
   return (
